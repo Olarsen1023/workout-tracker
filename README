@@ -1,0 +1,9 @@
+
+    What is the purpose of the src/ directory structure?
+      to help the code be clean and seperation of the concerns for the test cases.
+    Why do we use super().__init__() in the subclass?
+      so that we are able to specify specific items within the subclass without chnaging the main one.
+    How does inheritance help us avoid code duplication?
+      it allows us to blanket the code with a common class!
+    What role do the tests play in guiding your implementation?
+    Why do we work on a dev branch instead of directly on main?
