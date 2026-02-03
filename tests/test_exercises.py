@@ -4,8 +4,8 @@ import pytest
 from workout_tracker.exercises import (
     Exercise,
     CardioExercise,
-    StrengthExercise,
-    FlexibilityExercise
+    #StrengthExercise,
+    #FlexibilityExercise
 )
 
 
