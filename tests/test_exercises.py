@@ -4,8 +4,8 @@ import pytest
 from workout_tracker.exercises import (
     Exercise,
     CardioExercise,
-    #StrengthExercise,
-    #FlexibilityExercise
+    StrengthExercise,
+    FlexibilityExercise
 )
 
 
@@ -35,7 +35,7 @@ class TestCardioExercise:
         exercise = CardioExercise("Running", distance=5.0, duration=40)
         result = str(exercise)
         assert "Running" in result
-        assert "5.0 miles" in result
+        assert "5 miles" in result
         assert "500" in result  # calories
 
 
