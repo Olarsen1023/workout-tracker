@@ -8,6 +8,7 @@ class Workout:
 
     def add_exercise(self, exercise: Exercise) -> None:
 
+        # same thing ive kinda been doing with typeerror just so I can check where its going
         if not isinstance(exercise, Exercise):
             raise TypeError("Only Exercise objects can be added to a workout")
         self._exercises.append(exercise)
@@ -26,6 +27,7 @@ class Workout:
         return len(self._exercises)
 
     def get_summary(self) -> str:
+        # base case basicly 
         if not self._exercises:
             return "Empty workout - no exercises added"
 
@@ -40,6 +42,7 @@ class Workout:
 
         return "\n".join(lines)
 
+    # this is giving them a update every time they add something. jsut a lil teaser
     def __str__(self) -> str:
 
         return f"Workout with {self.exercise_count()} exercise(s), {self.total_calories():.0f} calories"

@@ -164,6 +164,7 @@ class StrengthExercise(Exercise):
         if s < 1:
             raise ValueError("sets must be at least 1")
 
+        # store vals
         self.weight = w
         self.reps = r
         self.sets = s
@@ -178,6 +179,7 @@ class StrengthExercise(Exercise):
 
     def __str__(self) -> str:
   
+        # str to format the output!
         calories_int = round(self.calculate_calories())
         weight_text = f"{self.weight:g}"
         return (
@@ -202,6 +204,7 @@ class FlexibilityExercise(Exercise):
     ):
         super().__init__(name, date)
 
+       # made some execptions across all of the classes
         try:
             dur = float(duration)
         except (TypeError, ValueError) as exc:
@@ -226,6 +229,7 @@ class FlexibilityExercise(Exercise):
 
     def __str__(self) -> str:
 
+        # same format but little smaller because less varibles to worry about
         calories_int = round(self.calculate_calories())
         dur_text = f"{self.duration:g}"
         return f"{self.name} ({dur_text} min, {self.intensity} intensity): {calories_int} calories"
