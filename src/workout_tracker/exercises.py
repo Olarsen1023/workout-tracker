@@ -90,10 +90,21 @@ class CardioExercise(Exercise):
             raise ValueError("distance must be non-negative")
         if duration < 0:
             raise ValueError("duration must be non-negative")
+        try:
+            d = float(distance)
+            t = float(duration)
+        except (TypeError, ValueError) as exc:
+            raise TypeError("Distance and Duration has to numeric") from exc
+        
+        if d < 0:
+            raise ValueError("distance has to be greater than 0")
+        if t < 0:
+            raise ValueError("duration has to be greater than 0")
+        
 
         self.distance = float(distance)
         self.duration = float(duration)
-
+        
     def calculate_calories(self) -> float:
         """Calculate calories burned based on distance.
 
