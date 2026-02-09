@@ -104,7 +104,7 @@ class CardioExercise(Exercise):
 
         self.distance = float(distance)
         self.duration = float(duration)
-        
+
     def calculate_calories(self) -> float:
         """Calculate calories burned based on distance.
 
@@ -130,3 +130,58 @@ class CardioExercise(Exercise):
         dist_text = f"{self.distance:g}"  # trims trailing zeros
         dur_text = f"{self.duration:g}"   # trims trailing zeros
         return f"{self.name} ({dist_text} miles, {dur_text} min): {cals_text} calories"
+
+
+class StrengthExercise(Exercise):
+
+    def __init__(
+        self,
+        name: str,
+        weight: float,
+        reps: int,
+        sets: int,
+        date: str | None = None,
+    ):
+
+        super().__init__(name, date)
+
+        # Validate and coerce inputs
+        try:
+            w = float(weight)
+        except (TypeError, ValueError) as exc:
+            raise TypeError("weight must be numeric") from exc
+
+        try:
+            r = int(reps)
+            s = int(sets)
+        except (TypeError, ValueError) as exc:
+            raise TypeError("reps and sets must be integers") from exc
+
+        if w < 0:
+            raise ValueError("weight must be non-negative")
+        if r < 1:
+            raise ValueError("reps must be at least 1")
+        if s < 1:
+            raise ValueError("sets must be at least 1")
+
+        self.weight = w
+        self.reps = r
+        self.sets = s
+
+    def calculate_calories(self) -> float:
+
+        return self.weight * self.reps * self.sets * 0.05
+
+    def get_duration(self) -> float:
+
+        return float(self.sets * 3)
+
+    def __str__(self) -> str:
+  
+        calories_int = round(self.calculate_calories())
+        weight_text = f"{self.weight:g}"
+        return (
+            f"{self.name} ({weight_text} lbs x {self.reps} reps x {self.sets} sets): "
+            f"{calories_int} calories"
+        )
+
